@@ -1,0 +1,22 @@
+{
+  "name": "steam-ticket-generator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/steam-ticket.js"
+  },
+  "bin": {
+    "steamticket": "bin/steam-ticket.js"
+  },
+  "keywords": [
+    "steam"
+  ],
+  "author": "aaa4xu",
+  "license": "ISC",
+  "dependencies": {
+    "steam-totp": "^2.0.1",
+    "steam-user": "^3.26.0"
+  }
+}
