@@ -10,5 +10,5 @@ const Generator = require('steam-ticket-generator');
 
 const steamGuardCode = 'ABC45';
 const appid = 570;
-const code = Generator('login', 'password', steamGuardCode, appid);
+const {ticket, accountId} = Generator('login', 'password', steamGuardCode, appid);
 ```

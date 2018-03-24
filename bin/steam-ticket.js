@@ -12,7 +12,10 @@ const [,, username, password, key, appid] = process.argv;
 promisify(SteamTotp.getTimeOffset)().then(offset => {
     const code = SteamTotp.generateAuthCode(key, offset);
     return Generator(username, password, code, parseInt(appid, 10));
-}).then(token => {
-    console.log(token.toString('hex'));
-    process.exit();
-}, console.error);
+}).then(({ticket}) => {
+    console.log(ticket.toString('hex'));
+    process.exit(0);
+}, err => {
+    console.error(err.stack || err);
+    process.exit(1);
+});

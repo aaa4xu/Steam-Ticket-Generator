@@ -6,7 +6,7 @@ const SteamUser = require('steam-user');
  * @param {string} password
  * @param {string} twoFactorCode
  * @param {number} appid
- * @return {Promise<Buffer>}
+ * @return {Promise<{accountId: number, ticket: Buffer}>}
  */
 module.exports = (accountName, password, twoFactorCode, appid) => {
     return new Promise((resolve, reject) => {
@@ -21,7 +21,16 @@ module.exports = (accountName, password, twoFactorCode, appid) => {
         client.on('loggedOn', (details) => {
             client.setPersona(SteamUser.EPersonaState.Online);
             client.gamesPlayed(appid, true);
-            client.getAuthSessionTicket(appid, (err, ticket) => err ? reject(err) : resolve(ticket));
+            client.getAuthSessionTicket(appid, (err, ticket) => {
+                if(err) return reject(err);
+
+                resolve({
+                    accountId: details.client_supplied_steamid.low,
+                    ticket,
+                });
+            });
         });
+
+        client.on('error', reject);
     });
 };
