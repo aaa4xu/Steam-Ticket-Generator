@@ -1,6 +1,6 @@
 {
   "name": "@aaa4xu/steam-ticket-generator",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI for Steam auth session ticket generation",
   "main": "src/index.js",
   "scripts": {
