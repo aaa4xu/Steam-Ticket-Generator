@@ -1,11 +1,12 @@
 {
-  "name": "steam-ticket-generator",
+  "name": "@aaa4xu/steam-ticket-generator",
   "version": "1.2.0",
   "description": "CLI for Steam auth session ticket generation",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/steam-ticket.js"
+    "start": "node bin/steam-ticket.js",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "bin": {
     "steamticket": "bin/steam-ticket.js"
