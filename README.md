@@ -2,13 +2,13 @@
 CLI for Steam auth session ticket generation
 
 ## Using as CLI
-`steamticket username password shared_secret appid`
+`steamticket username password second_factor appid`
 
 ## Using as library
 ```javascript
 const Generator = require('steam-ticket-generator');
 
-const steamGuardCode = 'ABC45';
+const secondFactor = 'ABC45'; // Steam Guard Code or shared_secret
 const appid = 570;
-const {ticket, accountId} = Generator('login', 'password', steamGuardCode, appid);
+const {ticket, accountId} = Generator('login', 'password', secondFactor, appid);
 ```
